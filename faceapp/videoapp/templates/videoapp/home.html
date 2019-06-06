@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <ul>
+    <li>
+      <a href="{% url 'video_form' %}">Video_Form</a>
+    </li>
+  </ul>
+
+  <p>Uploaded files:</p>
+  <ul>
+    {% for obj in video %}
+      <li>
+        <a href="{{ obj.url }}" target="_blank">{{ obj.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
