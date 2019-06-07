@@ -7,4 +7,4 @@ class Video(models.Model):
     file= models.FileField(validators=[validate_file_extension,validate_file_size])
 
     def __str__(self):
-        return self.name + ": " + str(self.videofile)
+        return self.name + ": " + str(self.file)

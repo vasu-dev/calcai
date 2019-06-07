@@ -6,6 +6,7 @@ from .forms import VideoForm
 
 def home(request):
     video = Video.objects.all()
+    #print (video[0].file)
     return render(request, 'videoapp/home.html', { 'video': video })
 
 def video_form(request):
