@@ -1,8 +1,11 @@
 import urllib.request
 import base64
+from django.conf import settings
 
-def faceplusplus(filepath):
+def faceplusplus(path):
 
+	#base = "../media/" 
+	filepath = settings.MEDIA_ROOT + "/" + path
 	http_url = 'https://api-us.faceplusplus.com/facepp/v3/detect'
 	key = "c6gsubtpVs-Mat5Q62VKYCQt1E2mV-ky"
 	secret = "fXHckaD7yf1l0xwQOOzwKb58W1-dFOvX"

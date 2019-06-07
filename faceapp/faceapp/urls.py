@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,6 +26,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^uploads/form/$', views.video_form, name='video_form'),
     url(r'^admin/', admin.site.urls),
+    path('api/', include('videoapp.urls')),
 ]
 
 if settings.DEBUG:
