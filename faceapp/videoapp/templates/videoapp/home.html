@@ -31,20 +31,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
       $('#imgList').change(function(){
-        load($(this).val());});
+        load($(this).find("option:selected").text(),$(this).val());});
 
-      function load(name_p)
+      function load(img_n,name_p)
     {
       $.ajax({
       type:"POST",
       crossDomain: true,
-      url: "https://faceplus-243117.appspot.com/api/faceplus/",
+      url: "http://127.0.0.1:8000/api/faceplus/",
       data: { path: name_p}
       }).done(function(response){
         var userDiv = "";
         $.each(response.data, function(key, value){
-          console.log(value);
-          userDiv += '<div class="data">' + value + '</div>';
+          console.log(value,img_n);
+          userDiv += '<div class="name"><div class="colon"><div class="data">' +  img_n  +  "   :   " +  value + '</div></div></div>';
         });
         $(".append-div").append(userDiv)
       });
