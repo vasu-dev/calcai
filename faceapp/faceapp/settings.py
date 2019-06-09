@@ -93,7 +93,7 @@ else:
     # to Cloud SQL via the proxy.  To start the proxy via command line: 
     #    $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306 
     # See https://cloud.google.com/sql/docs/mysql-connect-proxy
-    DATABASES = {
+    """DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'HOST': '127.0.0.1',
@@ -102,7 +102,13 @@ else:
             'USER': 'vasu-dev',
             'PASSWORD': 'Vasu@0021',
         }
+    }"""
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}
 
 
 # Password validation
