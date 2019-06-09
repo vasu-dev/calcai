@@ -7,8 +7,8 @@ def faceplusplus(path):
 	#base = "../media/" 
 	filepath = settings.MEDIA_ROOT + "/" + path
 	http_url = 'https://api-us.faceplusplus.com/facepp/v3/detect'
-	key = "c6gsubtpVs-Mat5Q62VKYCQt1E2mV-ky"
-	secret = "fXHckaD7yf1l0xwQOOzwKb58W1-dFOvX"
+	key = "Ymznfr45A92cHhEp71JnhN5Bg-4in8i0"
+	secret = "nMvxII8gY2FWRGq1myLGqHGiuKKD8lAC"
 
 	with open(filepath, "rb") as image_file:
 	    encoded_image = base64.b64encode(image_file.read())
