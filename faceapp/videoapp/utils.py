@@ -1,18 +1,18 @@
 import urllib.request
 import base64
-from django.conf import settings
 
-def faceplusplus(path):
+def faceplusplus(name):
 
-	#base = "../media/" 
-	filepath = settings.MEDIA_ROOT + "/" + path
+	img_base_url = "https://storage.googleapis.com/faceapp-media/"
+	img_url = img_base_url + name
 	http_url = 'https://api-us.faceplusplus.com/facepp/v3/detect'
 	key = "Ymznfr45A92cHhEp71JnhN5Bg-4in8i0"
 	secret = "nMvxII8gY2FWRGq1myLGqHGiuKKD8lAC"
 
-	with open(filepath, "rb") as image_file:
-	    encoded_image = base64.b64encode(image_file.read())
-	raw_params = {"api_key": key, "api_secret": secret, "image_base64": encoded_image}
+	#with open(filepath, "rb") as image_file:
+	#    encoded_image = base64.b64encode(image_file.read())
+	#raw_params = {"api_key": key, "api_secret": secret, "image_base64": encoded_image}
+	raw_params = {"api_key": key, "api_secret": secret, "image_url": img_url}
 	params = urllib.parse.urlencode(raw_params)
 	data = params.encode( "ascii" ) 
 

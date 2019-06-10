@@ -29,7 +29,6 @@ ALLOWED_HOSTS = ['faceplus-243117.appspot.com','127.0.0.1']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -82,7 +81,7 @@ if os.getenv('GAE_APPLICATION', None):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/faceplus-243117:us-central1:imagesdata',
+            'HOST': '/cloudsql/faceplus-243117:us-central1:faceapp-models',
             'USER': 'vasu-dev',
             'PASSWORD': 'Vasu@0021',
             'NAME': 'images',
@@ -93,7 +92,7 @@ else:
     # to Cloud SQL via the proxy.  To start the proxy via command line: 
     #    $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306 
     # See https://cloud.google.com/sql/docs/mysql-connect-proxy
-    """DATABASES = {
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'HOST': '127.0.0.1',
@@ -102,13 +101,15 @@ else:
             'USER': 'vasu-dev',
             'PASSWORD': 'Vasu@0021',
         }
-    }"""
+    }
+    
+"""
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}
+}"""
 
 
 # Password validation
@@ -150,5 +151,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 
+
+
 MEDIA_URL =  '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'faceapp-media'
